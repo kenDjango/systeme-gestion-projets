@@ -24,3 +24,4 @@ C:\Users\Ken\source\repos\systeme-gestion-projets\DBService\obj\Debug\DBService.
 C:\Users\Ken\source\repos\systeme-gestion-projets\DBService\obj\Debug\DBService.csproj.CopyComplete
 C:\Users\Ken\source\repos\systeme-gestion-projets\DBService\obj\Debug\DBService.dll
 C:\Users\Ken\source\repos\systeme-gestion-projets\DBService\obj\Debug\DBService.pdb
+C:\Users\Ken\source\repos\systeme-gestion-projets\DBService\bin\fr\EntityFramework.SqlServer.resources.dll

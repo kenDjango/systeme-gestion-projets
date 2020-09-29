@@ -23,8 +23,6 @@ namespace DBService
         [OperationContract]
         DUser connectAsUser(string name, string password);
 
-
-        // TODO: ajoutez vos opérations de service ici
     }
 
 
