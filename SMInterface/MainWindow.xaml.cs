@@ -25,7 +25,10 @@ namespace SMInterface
 
         public MainWindow()
         {
+            DataContext = UserVM.Instance;
+
             InitializeComponent();
+            (DataContext as UserVM).grid = GridMain;
             GridMain.Children.Add(new UserControlLogin());
         }
 
@@ -49,11 +52,11 @@ namespace SMInterface
             switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
             {
                 case "ItemProjects":
-                    usc = new UserControlHome();
+                    usc = new UserControlProjects();
                     GridMain.Children.Add(usc);
                     break;
                 case "ItemBoard":
-                    usc = new UserControlCreate();
+                    usc = new UserControlProjectView();
                     GridMain.Children.Add(usc);
                     break;
                 case "ItemCreate":

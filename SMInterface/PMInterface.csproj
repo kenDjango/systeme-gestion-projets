@@ -69,11 +69,14 @@
     <Compile Include="UserControlCreate.xaml.cs">
       <DependentUpon>UserControlCreate.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControlHome.xaml.cs">
-      <DependentUpon>UserControlHome.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UserControlLogin.xaml.cs">
       <DependentUpon>UserControlLogin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlProjects.xaml.cs">
+      <DependentUpon>UserControlProjects.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlProjectView.xaml.cs">
+      <DependentUpon>UserControlProjectView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserVM.cs" />
     <Page Include="MainWindow.xaml">
@@ -97,11 +100,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControlHome.xaml">
+    <Page Include="UserControlLogin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControlLogin.xaml">
+    <Page Include="UserControlProjects.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlProjectView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -29,11 +29,13 @@ namespace SMInterface
         private void Button_LogIn(object sender, RoutedEventArgs e)
         {
 
-            var vm = DataContext as UserVM;
+            var vm = UserVM.Instance;
+
             if (vm.connectUser(username.Text, password.Password))
             {
-                Console.WriteLine(vm.dUser.projectsMember[0].Description);
                 LoginDialog.IsOpen = false;
+                vm.grid.Children.Clear();
+                vm.grid.Children.Add(vm.userControlProjects);
             }
             else
             {

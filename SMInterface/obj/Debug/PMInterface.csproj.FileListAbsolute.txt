@@ -9,14 +9,12 @@ C:\Users\Ken\source\repos\systeme-gestion-projets\SMInterface\bin\Debug\Material
 C:\Users\Ken\source\repos\systeme-gestion-projets\SMInterface\obj\Debug\PMInterface.csprojAssemblyReference.cache
 C:\Users\Ken\source\repos\systeme-gestion-projets\SMInterface\obj\Debug\MainWindow.g.cs
 C:\Users\Ken\source\repos\systeme-gestion-projets\SMInterface\obj\Debug\UserControlCreate.g.cs
-C:\Users\Ken\source\repos\systeme-gestion-projets\SMInterface\obj\Debug\UserControlHome.g.cs
 C:\Users\Ken\source\repos\systeme-gestion-projets\SMInterface\obj\Debug\App.g.cs
 C:\Users\Ken\source\repos\systeme-gestion-projets\SMInterface\obj\Debug\SMInterface_MarkupCompile.cache
 C:\Users\Ken\source\repos\systeme-gestion-projets\SMInterface\obj\Debug\SMInterface_MarkupCompile.lref
 C:\Users\Ken\source\repos\systeme-gestion-projets\SMInterface\obj\Debug\App.baml
 C:\Users\Ken\source\repos\systeme-gestion-projets\SMInterface\obj\Debug\MainWindow.baml
 C:\Users\Ken\source\repos\systeme-gestion-projets\SMInterface\obj\Debug\UserControlCreate.baml
-C:\Users\Ken\source\repos\systeme-gestion-projets\SMInterface\obj\Debug\UserControlHome.baml
 C:\Users\Ken\source\repos\systeme-gestion-projets\SMInterface\obj\Debug\SMInterface.g.resources
 C:\Users\Ken\source\repos\systeme-gestion-projets\SMInterface\obj\Debug\SMInterface.Properties.Resources.resources
 C:\Users\Ken\source\repos\systeme-gestion-projets\SMInterface\obj\Debug\PMInterface.csproj.GenerateResource.cache
@@ -26,4 +24,7 @@ C:\Users\Ken\source\repos\systeme-gestion-projets\SMInterface\obj\Debug\SMInterf
 C:\Users\Ken\source\repos\systeme-gestion-projets\SMInterface\obj\Debug\SMInterface.pdb
 C:\Users\Ken\source\repos\systeme-gestion-projets\SMInterface\obj\Debug\UserControlLogin.g.cs
 C:\Users\Ken\source\repos\systeme-gestion-projets\SMInterface\obj\Debug\UserControlLogin.baml
-C:\Users\Ken\source\repos\systeme-gestion-projets\SMInterface\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Ken\source\repos\systeme-gestion-projets\SMInterface\obj\Debug\UserControlProjects.g.cs
+C:\Users\Ken\source\repos\systeme-gestion-projets\SMInterface\obj\Debug\UserControlProjects.baml
+C:\Users\Ken\source\repos\systeme-gestion-projets\SMInterface\obj\Debug\UserControlProjectView.g.cs
+C:\Users\Ken\source\repos\systeme-gestion-projets\SMInterface\obj\Debug\UserControlProjectView.baml

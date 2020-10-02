@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Ken\source\repos\systeme-gestion-projets\SMInterface\App.xaml
-41740535124
+5-1829090632
 
-15684670027
+16-1650921599
 17-869552595
-MainWindow.xaml;UserControlCreate.xaml;UserControlHome.xaml;UserControlLogin.xaml;
+MainWindow.xaml;UserControlCreate.xaml;UserControlLogin.xaml;UserControlProjects.xaml;UserControlProjectView.xaml;
 
 True
 
