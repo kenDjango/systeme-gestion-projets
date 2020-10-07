@@ -29,13 +29,30 @@ namespace SMInterface
 
         private void Liste_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var list = sender as ListBox;
-            var ticket = list.SelectedItem as PMService.DTicket;
-            (DataContext as UserVM).SelectedTicket = ticket;
-            setComboBoxState(ticket.State);
-            EditDialog.IsOpen = true;
+            try
+            {
+                var list = sender as ListBox;
+                var ticket = list.SelectedItem as PMService.DTicket;
+                (DataContext as UserVM).SelectedTicket = ticket;
+                setComboBoxState(ticket.State);
+                EditDialog.IsOpen = true;
+            }
+            catch(Exception exp)
+            {
+                Console.WriteLine(exp);
+            }
+
         }
 
+
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+            PMService.DTicket ticket = (DataContext as UserVM).SelectedTicket;
+            string oldState = ticket.State;
+            ticket.State = comboxState.Text;
+            (DataContext as UserVM).editTicket(ticket,oldState);
+            EditDialog.IsOpen = false;
+        }
 
         private void setComboBoxState(string state)
         {
@@ -50,19 +67,8 @@ namespace SMInterface
                 case "DONE":
                     comboxState.SelectedIndex = 2;
                     break;
-                
+
             }
-        }
-
-        private void Edit_Click(object sender, RoutedEventArgs e)
-        {
-            var ticket = (DataContext as UserVM).SelectedTicket;
-            ticket.State = comboxState.Text;
-
-            Console.WriteLine(ticket.Title);
-
-            Console.WriteLine(ticket.Descritpion);
-            (DataContext as UserVM).editTicket(ticket.Id, ticket.Title,ticket.Descritpion,ticket.State);
         }
     }
 }

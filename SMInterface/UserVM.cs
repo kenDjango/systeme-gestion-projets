@@ -161,6 +161,7 @@ namespace SMInterface
             {
                 return TicketListToDo.Count;
             }
+
         }
 
         public int ListInProgressSize
@@ -196,14 +197,53 @@ namespace SMInterface
         }
 
         
-        public bool editTicket(int ticketId, string editTitle, string editDescription, string editState)
+        public bool editTicket(PMService.DTicket ticket, string oldState)
         {
             var DBClient = new PMService.TicketSystemServiceClient();
-            bool res = DBClient.editTicket(ticketId, editTitle, editDescription,editState);
+            bool res = DBClient.editTicket(ticket.Id, ticket.Title, ticket.Descritpion, ticket.State);
+            if (res)
+            {
+                removeAndAddTicket(oldState, ticket);
+            }
             DBClient.Close();
             return res;
-
         }
+
+        private void removeAndAddTicket(string oldState, PMService.DTicket ticket)
+        {
+            switch (ticket.State)
+            {
+                case "TODO":
+                    ticketListToDo.Add(ticket);
+                    PropertyChanged(this, new PropertyChangedEventArgs("ListToDoSize"));
+                    break;
+                case "WIP":
+                    TicketListInProgress.Add(ticket);
+                    PropertyChanged(this, new PropertyChangedEventArgs("ListInProgressSize"));
+                    break;
+                case "DONE":
+                    ticketListDone.Add(ticket);
+                    PropertyChanged(this, new PropertyChangedEventArgs("ListDoneSize"));
+                    break;
+            }
+
+            switch (oldState)
+            {
+                case "TODO":
+                    ticketListToDo.Remove(ticket);
+                    PropertyChanged(this, new PropertyChangedEventArgs("ListToDoSize"));
+                    break;
+                case "WIP":
+                    TicketListInProgress.Remove(ticket);
+                    PropertyChanged(this, new PropertyChangedEventArgs("ListInProgressSize"));
+                    break;
+                case "DONE":
+                    ticketListDone.Remove(ticket);
+                    PropertyChanged(this, new PropertyChangedEventArgs("ListDoneSize"));
+                    break;
+            }
+        }
+
 
 
         ICommand connectAsUser;
