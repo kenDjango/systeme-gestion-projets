@@ -23,6 +23,9 @@ namespace DBService
         [OperationContract]
         DUser connectAsUser(string name, string password);
 
+        [OperationContract]
+        bool editTicket(int ticketId, string editTitle, string editDescription,string editState);
+
     }
 
 
@@ -42,6 +45,9 @@ namespace DBService
     [DataContract]
     public class DTicket
     {
+
+        [DataMember]
+        public int Id { get; set; }
 
         [DataMember]
         public string Title { get; set; }

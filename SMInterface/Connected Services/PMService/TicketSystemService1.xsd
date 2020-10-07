@@ -28,4 +28,21 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="editTicket">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ticketId" type="xs:int" />
+        <xs:element minOccurs="0" name="editTitle" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="editDescription" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="editState" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="editTicketResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="editTicketResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

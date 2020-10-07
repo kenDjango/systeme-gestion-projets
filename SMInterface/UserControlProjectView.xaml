@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SMInterface"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              TextElement.Foreground="White"
@@ -12,54 +13,144 @@
              TextOptions.TextFormattingMode="Ideal"
              TextOptions.TextRenderingMode="Auto"
              FontFamily = "Calibri">
-
-    <Grid Margin="52,36,42,10">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="10"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="10"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0">
-            <Grid>
+    
+    <materialDesign:DialogHost x:Name="EditDialog" BorderBrush="{DynamicResource MaterialDesignDivider}">
+        <materialDesign:DialogHost.DialogContent>
+            <Grid Width="550" Height="250" HorizontalAlignment="Center">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="130"/>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Grid Grid.Row="0">
-                    <Label TextBlock.FontWeight="Bold" TextBlock.Foreground="#0366d6" Content="TO DO:" Margin="20,10,0,10"/>
-                    <Label TextBlock.FontWeight="Normal"  TextBlock.Foreground="#0366d6" Content="0" Margin="62,10,0,10"/>
+
+                <Grid Margin="10,0" Grid.Row="0">
+                    <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Right" VerticalAlignment="Center" Height="30">X</Button>
                 </Grid>
-                <ListBox Grid.Row="1" x:Name="listeToDo" ItemsSource="{Binding TicketListToDo}">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <Border CornerRadius="8" BorderThickness="2" BorderBrush="White">
-                                <Border CornerRadius="4" BorderThickness="2" BorderBrush="White">
-                                    <Grid HorizontalAlignment="Left"  VerticalAlignment="Top" Background="White" Width="280">
-                                        <Label TextBlock.FontWeight="Bold" TextBlock.Foreground="#0366d6" Content="{Binding Title}" Margin="22,10,10,126"/>
-                                        <Label Margin="22,48,10,10" Content="{Binding Descritpion}"></Label>
-                                    </Grid>
-                                </Border>
-                            </Border>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
 
+                <Grid Margin="10,0" Grid.Row="2">
+                    <TextBox Foreground="Gray"  TextWrapping="Wrap" Text="{Binding SelectedTicket.Title,Mode=TwoWay}" Margin="0,0,130,105"/>
+                    <TextBox Foreground="Gray" TextWrapping="Wrap" Text="{Binding SelectedTicket.Descritpion,Mode=TwoWay}" Margin="0,25,130,10"/>
+                    <ComboBox x:Name="comboxState" HorizontalAlignment="Right" VerticalAlignment="Top" Width="100">
+                        <ComboBoxItem IsSelected="True">TODO</ComboBoxItem>
+                        <ComboBoxItem>WIP</ComboBoxItem>
+                        <ComboBoxItem>DONE</ComboBoxItem>
+                    </ComboBox>
+                </Grid>
+
+                <Grid Margin="10,0" Grid.Row="4">
+                    <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                        <Label Foreground="Black">Created by:</Label>
+                        <Label Foreground="Gray" Content="{Binding SelectedTicket.Creator}"></Label>
+
+                        <Separator Width="10" Visibility="Hidden"></Separator>
+
+                        <Label Foreground="Black" Content="Owner:"/>
+                        <Label Foreground="Gray" Content="{Binding SelectedTicket.Owner}"/>
+                    </StackPanel>
+                    <Button Click="Edit_Click" Style="{DynamicResource MaterialDesignFlatButton}" VerticalAlignment="Center" HorizontalAlignment="Right">
+                        Edit
+                    </Button>
+                </Grid>
             </Grid>
-            
+        </materialDesign:DialogHost.DialogContent>
+
+            <Grid Margin="52,36,42,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Label TextBlock.FontWeight="Bold" TextBlock.Foreground="#0366d6" Content="TO DO:" Margin="20,10,0,10"/>
+                            <Label TextBlock.FontWeight="Normal"  TextBlock.Foreground="#0366d6" Content="{Binding ListToDoSize}" Margin="62,10,0,10"/>
+                        </Grid>
+                    <ListBox SelectionChanged="Liste_SelectionChanged"  Grid.Row="1" x:Name="listeToDo" ItemsSource="{Binding TicketListToDo}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border CornerRadius="8" BorderThickness="2" BorderBrush="White">
+                                        <Border CornerRadius="4" BorderThickness="2" BorderBrush="White">
+                                            <Grid HorizontalAlignment="Left"  VerticalAlignment="Top" Background="White" Width="250" Height="135">
+                                                <Label TextBlock.FontWeight="Bold" TextBlock.Foreground="#0366d6" Content="{Binding Title}" Margin="10,0,10,68"/>
+                                                <TextBlock  TextWrapping ="Wrap" Margin="10,26,10,10" Text="{Binding Descritpion}"></TextBlock>
+                                                <Label VerticalAlignment="Bottom" HorizontalAlignment="Left">Owner:</Label>
+                                                <Label VerticalAlignment="Bottom" HorizontalAlignment="Center" Content="{Binding Owner}"></Label>
+                                            </Grid>
+                                        </Border>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+                </Grid>
+
+
+                <Grid Grid.Column="2">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Label TextBlock.FontWeight="Bold" TextBlock.Foreground="#0366d6" Content="IN PROGRESS:" Margin="20,10,0,10"/>
+                            <Label TextBlock.FontWeight="Normal"  TextBlock.Foreground="#0366d6" Content="{Binding ListInProgressSize}" Margin="100,10,0,10"/>
+                        </Grid>
+                    <ListBox SelectionChanged="Liste_SelectionChanged" Grid.Row="1" x:Name="inProgess" ItemsSource="{Binding TicketListInProgress}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border CornerRadius="8" BorderThickness="2" BorderBrush="White">
+                                        <Border CornerRadius="4" BorderThickness="2" BorderBrush="White">
+                                            <Grid HorizontalAlignment="Left"  VerticalAlignment="Top" Background="White" Width="250" Height="135">
+                                                <Label TextBlock.FontWeight="Bold" TextBlock.Foreground="#0366d6" Content="{Binding Title}" Margin="10,0,10,68"/>
+                                                <TextBlock  TextWrapping ="Wrap" Margin="10,26,10,10" Text="{Binding Descritpion}"></TextBlock>
+                                                <Label VerticalAlignment="Bottom" HorizontalAlignment="Left">Owner:</Label>
+                                                <Label VerticalAlignment="Bottom" HorizontalAlignment="Center" Content="{Binding Owner}"></Label>
+                                            </Grid>
+                                        </Border>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+                </Grid>
+
+            <Grid Grid.Column="4">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Label TextBlock.FontWeight="Bold" TextBlock.Foreground="#0366d6" Content="DONE:" Margin="20,10,0,10"/>
+                        <Label TextBlock.FontWeight="Normal"  TextBlock.Foreground="#0366d6" Content="{Binding ListDoneSize}" Margin="62,10,0,10"/>
+                    </Grid>
+                    <ListBox  SelectionChanged="Liste_SelectionChanged" Grid.Row="1" x:Name="done" ItemsSource="{Binding TicketListDone}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border CornerRadius="8" BorderThickness="2" BorderBrush="White">
+                                    <Border CornerRadius="4" BorderThickness="2" BorderBrush="White">
+                                        <Grid HorizontalAlignment="Left"  VerticalAlignment="Top" Background="White" Width="250" Height="135">
+                                            <Label TextBlock.FontWeight="Bold" TextBlock.Foreground="#0366d6" Content="{Binding Title}" Margin="10,0,10,68"/>
+                                            <TextBlock  TextWrapping ="Wrap" Margin="10,26,10,10" Text="{Binding Descritpion}"></TextBlock>
+                                            <Label VerticalAlignment="Bottom" HorizontalAlignment="Left">Owner:</Label>
+                                            <Label VerticalAlignment="Bottom" HorizontalAlignment="Center" Content="{Binding Owner}"></Label>
+                                        </Grid>
+                                    </Border>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </Grid>
         </Grid>
-
-        
-        <Grid Grid.Column="2">
-            <Label TextBlock.FontWeight="Bold" TextBlock.Foreground="#0366d6" Content="IN PROGRESS:" HorizontalAlignment="Left" Margin="22,10,0,0" VerticalAlignment="Top"/>
-
-        </Grid>
-
-        <Grid Grid.Column="4">
-            <Label TextBlock.FontWeight="Bold" TextBlock.Foreground="#0366d6" Content="DONE:" HorizontalAlignment="Left" Margin="22,10,0,0" VerticalAlignment="Top"/>
-
-        </Grid>
-
-    </Grid>
+    </materialDesign:DialogHost>
 </UserControl>

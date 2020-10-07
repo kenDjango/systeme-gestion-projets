@@ -23,8 +23,47 @@ namespace SMInterface
         public ObservableCollection<PMService.DTicket> ticketListInProgress;
         public ObservableCollection<PMService.DTicket> ticketListDone;
 
+        public PMService.DTicket selectedTicket;
+
         public PMService.DProject selectedProject;
+
         public Grid grid;
+
+        private UserVM()
+        {
+            projects = new ObservableCollection<PMService.DProject>();
+            userControlProjects = new UserControlProjects();
+        }
+
+        public static UserVM Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new UserVM();
+                }
+                return instance;
+            }
+
+        }
+
+        public PMService.DTicket SelectedTicket
+        {
+            get
+            {
+                return selectedTicket;
+            }
+            set
+            {
+                if (selectedTicket != value)
+                {
+                    selectedTicket = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
 
         public UserControlProjects userControlProjects;
 
@@ -84,39 +123,87 @@ namespace SMInterface
             }
         }
 
-        private UserVM()
-        {
-            projects = new ObservableCollection<PMService.DProject>();
-            userControlProjects = new UserControlProjects();
-        }
-
-        public static UserVM Instance
+        public ObservableCollection<PMService.DTicket> TicketListInProgress
         {
             get
             {
-                if (instance == null)
-                {
-                    instance = new UserVM();
-                }
-                return instance;
+                return ticketListInProgress;
             }
+            set
+            {
+                if (ticketListInProgress != value)
+                {
+                    ticketListInProgress = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
 
+        public ObservableCollection<PMService.DTicket> TicketListDone
+        {
+            get
+            {
+                return ticketListDone;
+            }
+            set
+            {
+                if (ticketListDone != value)
+                {
+                    ticketListDone = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public int ListToDoSize
+        {
+            get
+            {
+                return TicketListToDo.Count;
+            }
+        }
+
+        public int ListInProgressSize
+        {
+            get
+            {
+                return TicketListInProgress.Count;
+            }
+        }
+
+        public int ListDoneSize
+        {
+            get
+            {
+                return TicketListDone.Count;
+            }
         }
 
 
         public bool connectUser(string username, string password)
         {
             var DBClient = new PMService.TicketSystemServiceClient();
-            currentUser = DBClient.connectAsUser(username, password);
+            currentUser =  DBClient.connectAsUser(username, password);
+            DBClient.Close();
             if (currentUser != null)
             {
                 projects = new ObservableCollection<PMService.DProject>(currentUser.projectsMember);
+
                 return true;
             }
             return false;
 
         }
 
+        
+        public bool editTicket(int ticketId, string editTitle, string editDescription, string editState)
+        {
+            var DBClient = new PMService.TicketSystemServiceClient();
+            bool res = DBClient.editTicket(ticketId, editTitle, editDescription,editState);
+            DBClient.Close();
+            return res;
+
+        }
 
 
         ICommand connectAsUser;
@@ -152,6 +239,11 @@ namespace SMInterface
                 return selectProject;
             }
         }
+
+
+
+
+
 
 
         private void NotifyPropertyChanged([CallerMemberName]string str = "")

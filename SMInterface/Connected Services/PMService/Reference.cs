@@ -186,6 +186,9 @@ namespace SMInterface.PMService {
         private string DescritpionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string OwnerField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -239,6 +242,19 @@ namespace SMInterface.PMService {
                 if ((object.ReferenceEquals(this.DescritpionField, value) != true)) {
                     this.DescritpionField = value;
                     this.RaisePropertyChanged("Descritpion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
                 }
             }
         }
@@ -307,6 +323,12 @@ namespace SMInterface.PMService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITicketSystemService/connectAsUser", ReplyAction="http://tempuri.org/ITicketSystemService/connectAsUserResponse")]
         System.Threading.Tasks.Task<SMInterface.PMService.DUser> connectAsUserAsync(string name, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITicketSystemService/editTicket", ReplyAction="http://tempuri.org/ITicketSystemService/editTicketResponse")]
+        bool editTicket(int ticketId, string editTitle, string editDescription, string editState);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITicketSystemService/editTicket", ReplyAction="http://tempuri.org/ITicketSystemService/editTicketResponse")]
+        System.Threading.Tasks.Task<bool> editTicketAsync(int ticketId, string editTitle, string editDescription, string editState);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -350,6 +372,14 @@ namespace SMInterface.PMService {
         
         public System.Threading.Tasks.Task<SMInterface.PMService.DUser> connectAsUserAsync(string name, string password) {
             return base.Channel.connectAsUserAsync(name, password);
+        }
+        
+        public bool editTicket(int ticketId, string editTitle, string editDescription, string editState) {
+            return base.Channel.editTicket(ticketId, editTitle, editDescription, editState);
+        }
+        
+        public System.Threading.Tasks.Task<bool> editTicketAsync(int ticketId, string editTitle, string editDescription, string editState) {
+            return base.Channel.editTicketAsync(ticketId, editTitle, editDescription, editState);
         }
     }
 }

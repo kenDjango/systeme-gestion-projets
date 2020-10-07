@@ -33,6 +33,7 @@
       <xs:element minOccurs="0" name="Creator" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Date" nillable="true" type="xs:base64Binary" />
       <xs:element minOccurs="0" name="Descritpion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="Owner" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />

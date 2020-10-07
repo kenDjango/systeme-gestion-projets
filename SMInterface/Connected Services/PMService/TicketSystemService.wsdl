@@ -19,6 +19,12 @@
   <wsdl:message name="ITicketSystemService_connectAsUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:connectAsUserResponse" />
   </wsdl:message>
+  <wsdl:message name="ITicketSystemService_editTicket_InputMessage">
+    <wsdl:part name="parameters" element="tns:editTicket" />
+  </wsdl:message>
+  <wsdl:message name="ITicketSystemService_editTicket_OutputMessage">
+    <wsdl:part name="parameters" element="tns:editTicketResponse" />
+  </wsdl:message>
   <wsdl:portType name="ITicketSystemService">
     <wsdl:operation name="createTicket">
       <wsdl:input wsaw:Action="http://tempuri.org/ITicketSystemService/createTicket" message="tns:ITicketSystemService_createTicket_InputMessage" />
@@ -27,6 +33,10 @@
     <wsdl:operation name="connectAsUser">
       <wsdl:input wsaw:Action="http://tempuri.org/ITicketSystemService/connectAsUser" message="tns:ITicketSystemService_connectAsUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ITicketSystemService/connectAsUserResponse" message="tns:ITicketSystemService_connectAsUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="editTicket">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITicketSystemService/editTicket" message="tns:ITicketSystemService_editTicket_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITicketSystemService/editTicketResponse" message="tns:ITicketSystemService_editTicket_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ITicketSystemService" type="tns:ITicketSystemService">
@@ -42,6 +52,15 @@
     </wsdl:operation>
     <wsdl:operation name="connectAsUser">
       <soap:operation soapAction="http://tempuri.org/ITicketSystemService/connectAsUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="editTicket">
+      <soap:operation soapAction="http://tempuri.org/ITicketSystemService/editTicket" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -28,7 +28,6 @@ namespace SMInterface
         private void ListeProjects_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
-            //Console.WriteLine((listeProjects.SelectedItem as PMService.DProject).Description);
             var vm = UserVM.Instance;
             if(listeProjects.SelectedItem != null)
             {

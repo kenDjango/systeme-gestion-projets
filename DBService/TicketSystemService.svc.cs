@@ -54,7 +54,8 @@ namespace DBService
                                 Date = t.Date,
                                 State = t.State.StateName,
                                 Creator =  t.Creator.Username,
-                                Owner = t.Owner.Username
+                                Owner = t.Owner.Username,
+                                Id = t.Id
                             });
                         }
 
@@ -73,6 +74,37 @@ namespace DBService
             {
                 return null;
             }
+        }
+
+        public bool editTicket(int ticketId, string editTitle, string editDescription, string editState)
+        {
+            try
+            {
+                using (var entities = new DBEntities())
+                {
+                    Ticket ticket  = entities.Tickets.Where((t) => t.Id == ticketId).ToArray()[0];
+                    ticket.Title = editTitle;
+                    ticket.Descritpion = editDescription;
+                    ticket.State = entities.States.Where((s) => s.StateName == editState).ToArray()[0];
+                    entities.SaveChanges();
+                    return true;
+                }
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
+
+        private State StateHelper(string state)
+        {
+            State res;
+            using (var entities = new DBEntities())
+            {
+                res = entities.States.Where((s) => s.StateName == state).ToArray()[0];
+            }
+            return res;
         }
     }
 }

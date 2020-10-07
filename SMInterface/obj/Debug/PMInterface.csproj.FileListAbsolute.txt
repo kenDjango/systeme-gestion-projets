@@ -28,3 +28,5 @@ C:\Users\Ken\source\repos\systeme-gestion-projets\SMInterface\obj\Debug\UserCont
 C:\Users\Ken\source\repos\systeme-gestion-projets\SMInterface\obj\Debug\UserControlProjects.baml
 C:\Users\Ken\source\repos\systeme-gestion-projets\SMInterface\obj\Debug\UserControlProjectView.g.cs
 C:\Users\Ken\source\repos\systeme-gestion-projets\SMInterface\obj\Debug\UserControlProjectView.baml
+C:\Users\Ken\source\repos\systeme-gestion-projets\SMInterface\obj\Debug\Window1.g.cs
+C:\Users\Ken\source\repos\systeme-gestion-projets\SMInterface\obj\Debug\Window1.baml
