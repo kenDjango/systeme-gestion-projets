@@ -48,6 +48,22 @@ namespace SMInterface
 
         }
 
+        public PMService.DUser CurrentUser
+        {
+            get
+            {
+                return currentUser;
+            }
+            set
+            {
+                if (currentUser != value)
+                {
+                    currentUser = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
         public PMService.DTicket SelectedTicket
         {
             get

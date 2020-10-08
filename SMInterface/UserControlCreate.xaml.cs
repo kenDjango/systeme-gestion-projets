@@ -22,7 +22,20 @@ namespace SMInterface
     {
         public UserControlCreate()
         {
+            DataContext = UserVM.Instance;
             InitializeComponent();
+        }
+
+        private void Button_Create(object sender, RoutedEventArgs e)
+        {
+            PMService.DTicket ticket = new PMService.DTicket()
+            {
+                Title = "dsds",
+                Descritpion = "dff",
+                State = "dds",
+                Creator = "dsd",
+                Owner = "sds"
+            };
         }
     }
 }
