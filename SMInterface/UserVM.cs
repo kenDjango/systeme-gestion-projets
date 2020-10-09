@@ -205,7 +205,6 @@ namespace SMInterface
             if (currentUser != null)
             {
                 projects = new ObservableCollection<PMService.DProject>(currentUser.projectsMember);
-
                 return true;
             }
             return false;
@@ -216,21 +215,22 @@ namespace SMInterface
         public bool editTicket(PMService.DTicket ticket, string oldState)
         {
             var DBClient = new PMService.TicketSystemServiceClient();
-            bool res = DBClient.editTicket(ticket.Id, ticket.Title, ticket.Descritpion, ticket.State);
+            bool res = DBClient.editTicket(ticket.Id, ticket.Title, ticket.Description, ticket.State);
             if (res)
             {
-                removeAndAddTicket(oldState, ticket);
+                removeAddTicket(oldState, ticket);
             }
             DBClient.Close();
             return res;
         }
 
-        private void removeAndAddTicket(string oldState, PMService.DTicket ticket)
+
+        private void removeAddTicket(string oldState, PMService.DTicket ticket)
         {
             switch (ticket.State)
             {
                 case "TODO":
-                    ticketListToDo.Add(ticket);
+                    TicketListToDo.Add(ticket);
                     PropertyChanged(this, new PropertyChangedEventArgs("ListToDoSize"));
                     break;
                 case "WIP":
@@ -238,15 +238,17 @@ namespace SMInterface
                     PropertyChanged(this, new PropertyChangedEventArgs("ListInProgressSize"));
                     break;
                 case "DONE":
-                    ticketListDone.Add(ticket);
+                    TicketListDone.Add(ticket);
                     PropertyChanged(this, new PropertyChangedEventArgs("ListDoneSize"));
+                    break;
+                default:
                     break;
             }
 
             switch (oldState)
             {
                 case "TODO":
-                    ticketListToDo.Remove(ticket);
+                    TicketListToDo.Remove(ticket);
                     PropertyChanged(this, new PropertyChangedEventArgs("ListToDoSize"));
                     break;
                 case "WIP":
@@ -254,12 +256,31 @@ namespace SMInterface
                     PropertyChanged(this, new PropertyChangedEventArgs("ListInProgressSize"));
                     break;
                 case "DONE":
-                    ticketListDone.Remove(ticket);
+                    TicketListDone.Remove(ticket);
                     PropertyChanged(this, new PropertyChangedEventArgs("ListDoneSize"));
+                    break;
+                case "NONE":
                     break;
             }
         }
 
+        //DBClient.createTicket return new ticket id or -1 if error
+        public int createTicket(PMService.DTicket ticket)
+        {
+            var DBClient = new PMService.TicketSystemServiceClient();
+            int res = DBClient.createTicket(ticket,selectedProject.Id,currentUser.Id);
+
+            if (res>=1)
+            {
+                ticket.Id = res;
+                removeAddTicket("NONE", ticket);
+                var tickets = new List<PMService.DTicket>(selectedProject.Tickets);
+                tickets.Add(ticket);
+                selectedProject.Tickets = tickets.ToArray();
+            }
+            DBClient.Close();
+            return res;
+        }
 
 
         ICommand connectAsUser;
@@ -295,11 +316,6 @@ namespace SMInterface
                 return selectProject;
             }
         }
-
-
-
-
-
 
 
         private void NotifyPropertyChanged([CallerMemberName]string str = "")

@@ -19,9 +19,9 @@ C:\Users\Ken\source\repos\systeme-gestion-projets\DBService\bin\EntityFramework.
 C:\Users\Ken\source\repos\systeme-gestion-projets\DBService\bin\EntityFramework.xml
 C:\Users\Ken\source\repos\systeme-gestion-projets\DBService\bin\EntityFramework.SqlServer.xml
 C:\Users\Ken\source\repos\systeme-gestion-projets\DBService\bin\fr\EntityFramework.resources.dll
-C:\Users\Ken\source\repos\systeme-gestion-projets\DBService\obj\Debug\DBService.csprojAssemblyReference.cache
+C:\Users\Ken\source\repos\systeme-gestion-projets\DBService\bin\fr\EntityFramework.SqlServer.resources.dll
 C:\Users\Ken\source\repos\systeme-gestion-projets\DBService\obj\Debug\DBService.csproj.CoreCompileInputs.cache
 C:\Users\Ken\source\repos\systeme-gestion-projets\DBService\obj\Debug\DBService.csproj.CopyComplete
 C:\Users\Ken\source\repos\systeme-gestion-projets\DBService\obj\Debug\DBService.dll
 C:\Users\Ken\source\repos\systeme-gestion-projets\DBService\obj\Debug\DBService.pdb
-C:\Users\Ken\source\repos\systeme-gestion-projets\DBService\bin\fr\EntityFramework.SqlServer.resources.dll
+C:\Users\Ken\source\repos\systeme-gestion-projets\DBService\obj\Debug\DBService.csprojAssemblyReference.cache

@@ -29,19 +29,15 @@ namespace SMInterface
 
         private void Liste_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            try
+
+            var list = sender as ListBox;
+            var ticket = list.SelectedItem as PMService.DTicket;
+            (DataContext as UserVM).SelectedTicket = ticket;
+            if(ticket != null)
             {
-                var list = sender as ListBox;
-                var ticket = list.SelectedItem as PMService.DTicket;
-                (DataContext as UserVM).SelectedTicket = ticket;
                 setComboBoxState(ticket.State);
                 EditDialog.IsOpen = true;
             }
-            catch(Exception exp)
-            {
-                Console.WriteLine(exp);
-            }
-
         }
 
 

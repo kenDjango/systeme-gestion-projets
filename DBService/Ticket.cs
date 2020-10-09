@@ -20,8 +20,8 @@ namespace DBService
         public Nullable<int> id_creator { get; set; }
         public Nullable<int> id_state { get; set; }
         public string Title { get; set; }
-        public string Descritpion { get; set; }
-        public byte[] Date { get; set; }
+        public string Description { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
     
         public virtual Project Project { get; set; }
         public virtual State State { get; set; }

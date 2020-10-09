@@ -13,32 +13,48 @@ namespace DBService
     // REMARQUE : pour lancer le client test WCF afin de tester ce service, sélectionnez Service1.svc ou Service1.svc.cs dans l'Explorateur de solutions et démarrez le débogage.
     public class TicketSystemService : ITicketSystemService
     {
-        public bool createTicket()
+        public int createTicket(DTicket ticket, int projectId, int creatorId)
         {
-            throw new NotImplementedException();
-        }
-
-        public string GetData(int value)
-        {
-            string res = "";
-            using (var entities = new DBEntities())
+            try
             {
-                var u = entities.Users.FirstOrDefault(
-                    (user) => user.Username == "ken");
-
-                foreach(Project p in u.ProjectMember)
+                using (var entities = new DDBEntitie())
                 {
-                    res += ($"Nom : {p.Name}, Prénom : {p.Owner.Username} \n");
+                    Console.WriteLine("dans le service web " + ticket.State);
+
+                    State state = entities.States.Where((s) => s.StateName == ticket.State).ToArray()[0];
+                    Project project = entities.Projects.Where((p) => p.Id == projectId).First();
+                    User creator = entities.Users.Where((u) => u.Id == creatorId).First();
+
+                    entities.Tickets.Add(new Ticket()
+                    {
+                        Title = ticket.Title,
+                        Description = ticket.Description,
+                        Date = ticket.Date,
+                        Project = project,
+                        Creator = creator,
+                        Owner = creator,
+                        id_state = state.Id
+
+                    });
+
+                    int newticket = entities.Tickets.OrderByDescending(i => i.Id).First().Id;
+
+                    entities.SaveChanges();
+
+                    return newticket;
                 }
             }
-            return res;
+            catch (Exception e)
+            {
+                return -1;
+            }
         }
 
         public DUser connectAsUser(string name, string password)
         {
             try
             {
-                using (var entities = new DBEntities())
+                using (var entities = new DDBEntitie())
                 {
                     ObservableCollection<DProject> projects = new ObservableCollection<DProject>();
                     var u = entities.Users.First((elem) => elem.Username == name && elem.Password == password);
@@ -50,7 +66,7 @@ namespace DBService
                             tickets.Add(new DTicket()
                             {
                                 Title = t.Title,
-                                Descritpion = t.Descritpion,
+                                Description = t.Description,
                                 Date = t.Date,
                                 State = t.State.StateName,
                                 Creator =  t.Creator.Username,
@@ -61,13 +77,14 @@ namespace DBService
 
                         projects.Add(new DProject()
                         {
+                            Id = p.Id,
                             Name = p.Name,
                             Owner = p.Owner.Username,
                             Description = p.Description,
                             Tickets = tickets
                         });
                     }
-                    return new DUser() { Username = u.Username, projectsMember = projects };
+                    return new DUser() { Username = u.Username, projectsMember = projects, Id = u.Id };
                 }
             }
             catch
@@ -80,11 +97,11 @@ namespace DBService
         {
             try
             {
-                using (var entities = new DBEntities())
+                using (var entities = new DDBEntitie())
                 {
                     Ticket ticket  = entities.Tickets.Where((t) => t.Id == ticketId).ToArray()[0];
                     ticket.Title = editTitle;
-                    ticket.Descritpion = editDescription;
+                    ticket.Description = editDescription;
                     ticket.State = entities.States.Where((s) => s.StateName == editState).ToArray()[0];
                     entities.SaveChanges();
                     return true;
@@ -99,7 +116,7 @@ namespace DBService
         private State StateHelper(string state)
         {
             State res;
-            using (var entities = new DBEntities())
+            using (var entities = new DDBEntitie())
             {
                 res = entities.States.Where((s) => s.StateName == state).ToArray()[0];
             }

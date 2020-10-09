@@ -14,11 +14,8 @@ namespace DBService
     public interface ITicketSystemService
     {
 
-        //[OperationContract]
-        //bool createProject();
-
         [OperationContract]
-        bool createTicket();
+        int createTicket(DTicket ticket, int projectId, int creatorId);
 
         [OperationContract]
         DUser connectAsUser(string name, string password);
@@ -33,6 +30,8 @@ namespace DBService
     [DataContract]
     public class DUser
     {
+        [DataMember]
+        public int Id { get; set; }
 
         [DataMember]
         public string Username { get; set; }
@@ -53,10 +52,10 @@ namespace DBService
         public string Title { get; set; }
 
         [DataMember]
-        public string Descritpion { get; set; }
+        public string Description { get; set; }
 
         [DataMember]
-        public byte[] Date { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
 
         [DataMember]
         public string State { get; set; }
@@ -71,6 +70,8 @@ namespace DBService
     [DataContract]
     public class DProject
     {
+        [DataMember]
+        public int Id { get; set; }
 
         [DataMember]
         public string Name { get; set; }

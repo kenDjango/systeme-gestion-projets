@@ -31,7 +31,7 @@
 
                 <Grid Margin="10,0" Grid.Row="2">
                     <TextBox Foreground="Gray"  TextWrapping="Wrap" Text="{Binding SelectedTicket.Title,Mode=TwoWay}" Margin="0,0,130,105"/>
-                    <TextBox Foreground="Gray" TextWrapping="Wrap" Text="{Binding SelectedTicket.Descritpion,Mode=TwoWay}" Margin="0,25,130,10"/>
+                    <TextBox Foreground="Gray" TextWrapping="Wrap" Text="{Binding SelectedTicket.Description,Mode=TwoWay}" Margin="0,25,130,10"/>
                     <ComboBox x:Name="comboxState" HorizontalAlignment="Right" VerticalAlignment="Top" Width="100">
                         <ComboBoxItem IsSelected="True">TODO</ComboBoxItem>
                         <ComboBoxItem>WIP</ComboBoxItem>
@@ -81,7 +81,7 @@
                                         <Border CornerRadius="4" BorderThickness="2" BorderBrush="White">
                                             <Grid HorizontalAlignment="Left"  VerticalAlignment="Top" Background="White" Width="250" Height="135">
                                                 <Label TextBlock.FontWeight="Bold" TextBlock.Foreground="#0366d6" Content="{Binding Title}" Margin="10,0,10,68"/>
-                                                <TextBlock  TextWrapping ="Wrap" Margin="10,26,10,10" Text="{Binding Descritpion}"></TextBlock>
+                                                <TextBlock  TextWrapping ="Wrap" Margin="10,26,10,10" Text="{Binding Description}"></TextBlock>
                                                 <Label VerticalAlignment="Bottom" HorizontalAlignment="Left">Owner:</Label>
                                                 <Label VerticalAlignment="Bottom" HorizontalAlignment="Center" Content="{Binding Owner}"></Label>
                                             </Grid>
@@ -111,7 +111,7 @@
                                         <Border CornerRadius="4" BorderThickness="2" BorderBrush="White">
                                             <Grid HorizontalAlignment="Left"  VerticalAlignment="Top" Background="White" Width="250" Height="135">
                                                 <Label TextBlock.FontWeight="Bold" TextBlock.Foreground="#0366d6" Content="{Binding Title}" Margin="10,0,10,68"/>
-                                                <TextBlock  TextWrapping ="Wrap" Margin="10,26,10,10" Text="{Binding Descritpion}"></TextBlock>
+                                                <TextBlock  TextWrapping ="Wrap" Margin="10,26,10,10" Text="{Binding Description}"></TextBlock>
                                                 <Label VerticalAlignment="Bottom" HorizontalAlignment="Left">Owner:</Label>
                                                 <Label VerticalAlignment="Bottom" HorizontalAlignment="Center" Content="{Binding Owner}"></Label>
                                             </Grid>
@@ -140,7 +140,7 @@
                                     <Border CornerRadius="4" BorderThickness="2" BorderBrush="White">
                                         <Grid HorizontalAlignment="Left"  VerticalAlignment="Top" Background="White" Width="250" Height="135">
                                             <Label TextBlock.FontWeight="Bold" TextBlock.Foreground="#0366d6" Content="{Binding Title}" Margin="10,0,10,68"/>
-                                            <TextBlock  TextWrapping ="Wrap" Margin="10,26,10,10" Text="{Binding Descritpion}"></TextBlock>
+                                            <TextBlock  TextWrapping ="Wrap" Margin="10,26,10,10" Text="{Binding Description}"></TextBlock>
                                             <Label VerticalAlignment="Bottom" HorizontalAlignment="Left">Owner:</Label>
                                             <Label VerticalAlignment="Bottom" HorizontalAlignment="Center" Content="{Binding Owner}"></Label>
                                         </Grid>

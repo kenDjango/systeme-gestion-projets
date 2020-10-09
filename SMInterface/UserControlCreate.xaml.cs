@@ -28,14 +28,32 @@ namespace SMInterface
 
         private void Button_Create(object sender, RoutedEventArgs e)
         {
+            string user = (DataContext as UserVM).currentUser.Username;
             PMService.DTicket ticket = new PMService.DTicket()
             {
-                Title = "dsds",
-                Descritpion = "dff",
-                State = "dds",
-                Creator = "dsd",
-                Owner = "sds"
+                Title = ticketTitle.Text,
+                Description = ticketDescription.Text,
+                State = comboxState.Text,
+                Creator = user,
+                Owner = user,
+                Date = DateTime.Now
             };
+            int result = (DataContext as UserVM).createTicket(ticket);
+
+            if (result > 1)
+            {
+                createDialog.IsOpen = true;
+                success.Visibility = Visibility.Visible;
+                failure.Visibility = Visibility.Hidden;
+                icon.Kind = MaterialDesignThemes.Wpf.PackIconKind.Done;
+            }
+            else
+            {
+                createDialog.IsOpen = true;
+                success.Visibility = Visibility.Hidden;
+                failure.Visibility = Visibility.Visible;
+                icon.Kind = MaterialDesignThemes.Wpf.PackIconKind.Error;
+            }
         }
     }
 }

@@ -15,160 +15,6 @@ namespace SMInterface.PMService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="DUser", Namespace="http://schemas.datacontract.org/2004/07/DBService")]
-    [System.SerializableAttribute()]
-    public partial class DUser : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UsernameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SMInterface.PMService.DProject[] projectsMemberField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Username {
-            get {
-                return this.UsernameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UsernameField, value) != true)) {
-                    this.UsernameField = value;
-                    this.RaisePropertyChanged("Username");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public SMInterface.PMService.DProject[] projectsMember {
-            get {
-                return this.projectsMemberField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.projectsMemberField, value) != true)) {
-                    this.projectsMemberField = value;
-                    this.RaisePropertyChanged("projectsMember");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="DProject", Namespace="http://schemas.datacontract.org/2004/07/DBService")]
-    [System.SerializableAttribute()]
-    public partial class DProject : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string OwnerField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SMInterface.PMService.DTicket[] TicketsField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Description {
-            get {
-                return this.DescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
-                    this.DescriptionField = value;
-                    this.RaisePropertyChanged("Description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Owner {
-            get {
-                return this.OwnerField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.OwnerField, value) != true)) {
-                    this.OwnerField = value;
-                    this.RaisePropertyChanged("Owner");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public SMInterface.PMService.DTicket[] Tickets {
-            get {
-                return this.TicketsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TicketsField, value) != true)) {
-                    this.TicketsField = value;
-                    this.RaisePropertyChanged("Tickets");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DTicket", Namespace="http://schemas.datacontract.org/2004/07/DBService")]
     [System.SerializableAttribute()]
     public partial class DTicket : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -180,10 +26,10 @@ namespace SMInterface.PMService {
         private string CreatorField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private byte[] DateField;
+        private System.Nullable<System.DateTime> DateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescritpionField;
+        private string DescriptionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdField;
@@ -221,12 +67,12 @@ namespace SMInterface.PMService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public byte[] Date {
+        public System.Nullable<System.DateTime> Date {
             get {
                 return this.DateField;
             }
             set {
-                if ((object.ReferenceEquals(this.DateField, value) != true)) {
+                if ((this.DateField.Equals(value) != true)) {
                     this.DateField = value;
                     this.RaisePropertyChanged("Date");
                 }
@@ -234,14 +80,14 @@ namespace SMInterface.PMService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Descritpion {
+        public string Description {
             get {
-                return this.DescritpionField;
+                return this.DescriptionField;
             }
             set {
-                if ((object.ReferenceEquals(this.DescritpionField, value) != true)) {
-                    this.DescritpionField = value;
-                    this.RaisePropertyChanged("Descritpion");
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
                 }
             }
         }
@@ -308,15 +154,201 @@ namespace SMInterface.PMService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DUser", Namespace="http://schemas.datacontract.org/2004/07/DBService")]
+    [System.SerializableAttribute()]
+    public partial class DUser : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UsernameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SMInterface.PMService.DProject[] projectsMemberField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Username {
+            get {
+                return this.UsernameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UsernameField, value) != true)) {
+                    this.UsernameField = value;
+                    this.RaisePropertyChanged("Username");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SMInterface.PMService.DProject[] projectsMember {
+            get {
+                return this.projectsMemberField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.projectsMemberField, value) != true)) {
+                    this.projectsMemberField = value;
+                    this.RaisePropertyChanged("projectsMember");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DProject", Namespace="http://schemas.datacontract.org/2004/07/DBService")]
+    [System.SerializableAttribute()]
+    public partial class DProject : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OwnerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SMInterface.PMService.DTicket[] TicketsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Owner {
+            get {
+                return this.OwnerField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OwnerField, value) != true)) {
+                    this.OwnerField = value;
+                    this.RaisePropertyChanged("Owner");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SMInterface.PMService.DTicket[] Tickets {
+            get {
+                return this.TicketsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TicketsField, value) != true)) {
+                    this.TicketsField = value;
+                    this.RaisePropertyChanged("Tickets");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="PMService.ITicketSystemService")]
     public interface ITicketSystemService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITicketSystemService/createTicket", ReplyAction="http://tempuri.org/ITicketSystemService/createTicketResponse")]
-        bool createTicket();
+        int createTicket(SMInterface.PMService.DTicket ticket, int projectId, int creatorId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITicketSystemService/createTicket", ReplyAction="http://tempuri.org/ITicketSystemService/createTicketResponse")]
-        System.Threading.Tasks.Task<bool> createTicketAsync();
+        System.Threading.Tasks.Task<int> createTicketAsync(SMInterface.PMService.DTicket ticket, int projectId, int creatorId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITicketSystemService/connectAsUser", ReplyAction="http://tempuri.org/ITicketSystemService/connectAsUserResponse")]
         SMInterface.PMService.DUser connectAsUser(string name, string password);
@@ -358,12 +390,12 @@ namespace SMInterface.PMService {
                 base(binding, remoteAddress) {
         }
         
-        public bool createTicket() {
-            return base.Channel.createTicket();
+        public int createTicket(SMInterface.PMService.DTicket ticket, int projectId, int creatorId) {
+            return base.Channel.createTicket(ticket, projectId, creatorId);
         }
         
-        public System.Threading.Tasks.Task<bool> createTicketAsync() {
-            return base.Channel.createTicketAsync();
+        public System.Threading.Tasks.Task<int> createTicketAsync(SMInterface.PMService.DTicket ticket, int projectId, int creatorId) {
+            return base.Channel.createTicketAsync(ticket, projectId, creatorId);
         }
         
         public SMInterface.PMService.DUser connectAsUser(string name, string password) {

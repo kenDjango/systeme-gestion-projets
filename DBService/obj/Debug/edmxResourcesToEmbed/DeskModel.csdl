@@ -30,8 +30,8 @@
     <Property Name="id_creator" Type="Int32" />
     <Property Name="id_state" Type="Int32" />
     <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Descritpion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Date" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="DateTime" annotation:StoreGeneratedPattern="Computed" />
     <NavigationProperty Name="Project" Relationship="Self.FK_Ticket_Project" FromRole="Ticket" ToRole="Project" />
     <NavigationProperty Name="State" Relationship="Self.FK_Ticket_State" FromRole="Ticket" ToRole="State" />
     <NavigationProperty Name="Creator" Relationship="Self.FK_Ticket_Creator" FromRole="Ticket" ToRole="User" />
