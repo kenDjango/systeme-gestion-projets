@@ -7,7 +7,7 @@
       <Diagram DiagramId="6f0f2c95276e4ac893e2914457279bf2" Name="Diagram1">
         <EntityTypeShape EntityType="DDBModel.Project" Width="1.5" PointX="4.5" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DDBModel.State" Width="1.5" PointX="9.875" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DDBModel.Ticket" Width="1.5" PointX="7.625" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DDBModel.Ticket" Width="1.5" PointX="8.125" PointY="0.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DDBModel.User" Width="1.5" PointX="0.5" PointY="2.5" IsExpanded="true" />
         <AssociationConnector Association="DDBModel.FK_Project_Owner" ManuallyRouted="false" />
         <AssociationConnector Association="DDBModel.FK_Ticket_Project" ManuallyRouted="false" />

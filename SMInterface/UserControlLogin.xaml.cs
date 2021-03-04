@@ -17,7 +17,7 @@ using System.Windows.Shapes;
 namespace SMInterface
 {
     /// <summary>
-    /// Logique d'interaction pour UserControlLogin.xaml
+    /// Logique d'interaction pour UserControlLogin.xaml ssdsdsfq
     /// </summary>
     public partial class UserControlLogin : UserControl
     {
