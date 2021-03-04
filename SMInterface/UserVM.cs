@@ -26,6 +26,7 @@ namespace SMInterface
         public PMService.DTicket selectedTicket;
 
         public PMService.DProject selectedProject;
+        public int test = 0;
 
         public Grid grid;
 
